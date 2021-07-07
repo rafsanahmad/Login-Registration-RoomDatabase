@@ -84,7 +84,7 @@
             app:btn_borderColor="@color/border_color"
             app:btn_borderWidth="1dp"
             app:btn_cornerRadius="10dp"
-            app:btn_rippleColor="@color/view_subtitle"
+            app:btn_rippleColor="@color/dark_blue"
             app:btn_subtitle="@string/username_password"
             app:btn_subtitleColor="@color/white"
             app:btn_title="@string/logintext"

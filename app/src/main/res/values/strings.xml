@@ -6,4 +6,6 @@
     <string name="username_password">Username/Password</string>
     <string name="full_name">Full Name</string>
     <string name="register">Register</string>
+    <string name="logout">Logout</string>
+    <string name="end_session">This will end your session</string>
 </resources>

@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp">
 
+    <TextView
+        android:id="@+id/welcome_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.dev.custombutton.CustomButton
+        android:id="@+id/submitButton"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="@{()->viewModel.registerUser()}"
+        app:btn_backgroundColor="@color/light_blue"
+        app:btn_borderColor="@color/border_color"
+        app:btn_borderWidth="1dp"
+        app:btn_cornerRadius="10dp"
+        app:btn_image="@drawable/logout_icon"
+        app:btn_imageSize="40dp"
+        app:btn_imageTint="@color/white"
+        app:btn_imageVisible="true"
+        app:btn_rippleColor="@color/dark_blue"
+        app:btn_subtitle="@string/end_session"
+        app:btn_subtitleColor="@color/white"
+        app:btn_title="@string/logout"
+        app:btn_titleColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
