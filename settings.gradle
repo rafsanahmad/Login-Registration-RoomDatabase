@@ -1,0 +1,3 @@
+rootProject.name = "Login Registration"
+include ':app'
+include ':customButton'
