@@ -3,7 +3,6 @@ package com.dev.loginregistration.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dev.loginregistration.prefs
 
 class HomeViewModel : ViewModel() {
 
@@ -13,7 +12,7 @@ class HomeViewModel : ViewModel() {
         get() = _navigateToLogin
 
     fun logoutUser() {
-        prefs.registerStatus = false
+        //prefs.registerStatus = false
         _navigateToLogin.value = true
     }
 

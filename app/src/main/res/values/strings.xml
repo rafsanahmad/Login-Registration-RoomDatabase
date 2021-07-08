@@ -9,4 +9,5 @@
     <string name="logout">Logout</string>
     <string name="end_session">This will end your session</string>
     <string name="home">Home</string>
+    <string name="android_challenge">Android Challenge</string>
 </resources>

@@ -118,7 +118,7 @@
             app:btn_imageSize="40dp"
             app:btn_imageTint="@color/white"
             app:btn_imageVisible="true"
-            app:btn_rippleColor="@color/dark_blue"
+            app:btn_rippleColor="@color/purple_700"
             app:btn_title="@string/register"
             app:btn_titleColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

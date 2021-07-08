@@ -30,8 +30,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/timer_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
+
         <com.dev.custombutton.CustomButton
-            android:id="@+id/submitButton"
+            android:id="@+id/logoutBtn"
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:layout_marginBottom="50dp"
@@ -44,7 +57,7 @@
             app:btn_imageSize="40dp"
             app:btn_imageTint="@color/white"
             app:btn_imageVisible="true"
-            app:btn_rippleColor="@color/dark_blue"
+            app:btn_rippleColor="@color/purple_700"
             app:btn_subtitle="@string/end_session"
             app:btn_subtitleColor="@color/white"
             app:btn_title="@string/logout"

@@ -3,11 +3,13 @@ package com.dev.custombutton
 import android.animation.LayoutTransition
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.RippleDrawable
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -16,8 +18,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.dev.custombutton.model.Shape
-import com.github.nikartm.button.util.RippleEffect
-import com.github.nikartm.button.util.dpToPx
+import com.dev.custombutton.util.dpToPx
 
 
 /**
@@ -34,7 +35,7 @@ class CustomButton : LinearLayout {
     private var borderColor: Int = 0
     private var borderWidth: Float = 0f
     private var btnShape: Shape = Shape.RECTANGLE
-    private var btnBackgroundColor: Int = Color.WHITE
+    private var btnBackgroundColor: Int = Color.BLUE
 
     private var buttonListener: (() -> Unit)? = null
 
@@ -118,7 +119,7 @@ class CustomButton : LinearLayout {
             )
             btnBackgroundColor = a.getColor(
                 R.styleable.CustomButton_btn_backgroundColor,
-                resources.getColor(R.color.background_color)
+                Color.BLUE
             )
             borderColor = a.getColor(
                 R.styleable.CustomButton_btn_borderColor,
@@ -158,6 +159,8 @@ class CustomButton : LinearLayout {
             titleView.setTextColor(titleColor)
             subtitleView.setTextColor(subtitleColor)
 
+            setRippleColor(rippleColor)
+
             if (cornerRadius != 0f) {
                 setCornerRadius(cornerRadius)
             }
@@ -167,7 +170,11 @@ class CustomButton : LinearLayout {
             if (borderWidth != 0f) {
                 setButtonBorder(borderWidth, borderColor, btnBackgroundColor)
             }
-            setRippleColor(rippleColor)
+
+            if (btnShape != Shape.RECTANGLE) {
+                setButtonShape(btnShape)
+            }
+
         } finally {
             a.recycle()
         }
@@ -366,7 +373,9 @@ class CustomButton : LinearLayout {
      */
     fun setRippleColor(rippleColor: Int): CustomButton {
         getButton().rippleColor = rippleColor
-        addRipple()
+        val drawable = GradientDrawable()
+        drawable.setColor(btnBackgroundColor)
+        addRipple(drawable)
         return this
     }
 
@@ -382,6 +391,7 @@ class CustomButton : LinearLayout {
      */
     fun setButtonShape(btnShape: Shape): CustomButton {
         getButton().btnShape = btnShape
+        drawShape()
         return this
     }
 
@@ -436,26 +446,63 @@ class CustomButton : LinearLayout {
         if (cornerRadius != 0f) {
             border.cornerRadius = getButton().cornerRadius
         }
-        container.setBackground(border)
+        if (rippleColor != 0) {
+            addRipple(border)
+        } else {
+            container.background = border
+        }
     }
 
     fun setButtonCornerRadius(radius: Float) {
-        val shape = GradientDrawable()
-        shape.cornerRadius = radius
-        container.background = shape
+        val drawable = GradientDrawable()
+        drawable.cornerRadius = radius
+        if (rippleColor != 0) {
+            addRipple(drawable)
+        } else {
+            container.background = drawable
+        }
     }
 
-    fun addRipple() {
-        /*val shape = GradientDrawable()
-        //container.background = shape
-        RippleEffect.createRipple(
-            container,
-            getButton().btnBackgroundColor,
-            getButton().rippleColor,
-            getButton().cornerRadius,
-            getButton().btnShape,
-            shape
-        )*/
+    fun addRipple(drawable: GradientDrawable) {
+        val colorStateList = ColorStateList(arrayOf(intArrayOf()), intArrayOf(rippleColor))
+        val rippleDrawable = RippleDrawable(colorStateList, drawable, null)
+        container.background = rippleDrawable
+    }
+
+    // Draw button shape
+    private fun drawShape() {
+        val drawable = GradientDrawable()
+        drawable.setColor(btnBackgroundColor)
+        drawable.shape = when (getButton().btnShape) {
+            Shape.RECTANGLE -> GradientDrawable.RECTANGLE
+            Shape.OVAL -> GradientDrawable.OVAL
+            Shape.SQUARE -> alignSides(GradientDrawable.RECTANGLE)
+            Shape.CIRCLE -> alignSides(GradientDrawable.OVAL)
+        }
+        container.background = drawable
+    }
+
+    // Align shape sides
+    private fun alignSides(shape: Int): Int {
+        val dimension = if (container.layoutParams != null) {
+            defineFitSide(container.layoutParams.width, container.layoutParams.height)
+        } else {
+            defineFitSide(container.measuredWidth, container.measuredHeight)
+        }
+        if (container.layoutParams != null) {
+            container.layoutParams.width = dimension
+            container.layoutParams.height = dimension
+        }
+        return shape
+    }
+
+    // Get a min side or a max side if anyone side equal zero or less
+    private fun defineFitSide(w: Int, h: Int): Int {
+        return if (w <= 0 || h <= 0) {
+            Math.max(w, h)
+        } else {
+            Math.min(w, h)
+        }
     }
 
     private fun Any.unitify(): Unit {}

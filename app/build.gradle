@@ -60,8 +60,10 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
-    // ViewModel
+    // ViewModel, Lifecycle
+    implementation "androidx.lifecycle:lifecycle-process:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
 
