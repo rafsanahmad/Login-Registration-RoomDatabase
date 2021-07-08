@@ -111,10 +111,10 @@ class CustomButton : LinearLayout {
             )
             subtitleVisible = a.getBoolean(R.styleable.CustomButton_btn_subtitleVisible, true)
 
-            cornerRadius = a.getFloat(R.styleable.CustomButton_btn_cornerRadius, 0f)
+            cornerRadius = a.getDimension(R.styleable.CustomButton_btn_cornerRadius, 0f)
             rippleColor = a.getColor(
                 R.styleable.CustomButton_btn_rippleColor,
-                resources.getColor(R.color.ripple_color)
+                Color.TRANSPARENT
             )
             btnBackgroundColor = a.getColor(
                 R.styleable.CustomButton_btn_backgroundColor,
@@ -122,9 +122,9 @@ class CustomButton : LinearLayout {
             )
             borderColor = a.getColor(
                 R.styleable.CustomButton_btn_borderColor,
-                resources.getColor(R.color.border_color)
+                Color.TRANSPARENT
             )
-            borderWidth = a.getFloat(R.styleable.CustomButton_btn_borderWidth, 0f)
+            borderWidth = a.getDimension(R.styleable.CustomButton_btn_borderWidth, 0f)
             btnShape =
                 Shape.fromInt(a.getInt(R.styleable.CustomButton_btn_shape, Shape.RECTANGLE.shape))
 
@@ -159,14 +159,15 @@ class CustomButton : LinearLayout {
             subtitleView.setTextColor(subtitleColor)
 
             if (cornerRadius != 0f) {
-                setButtonCornerRadius(cornerRadius)
+                setCornerRadius(cornerRadius)
             }
-            addRipple()
+
             setBtnBackgroundColor(btnBackgroundColor)
 
             if (borderWidth != 0f) {
-                setButtonBorder(borderWidth, borderColor)
+                setButtonBorder(borderWidth, borderColor, btnBackgroundColor)
             }
+            setRippleColor(rippleColor)
         } finally {
             a.recycle()
         }
@@ -348,8 +349,8 @@ class CustomButton : LinearLayout {
      * @param cornerRadius [Float]
      */
     fun setCornerRadius(cornerRadius: Float): CustomButton {
-        getButton().cornerRadius = dpToPx(cornerRadius)
-        setButtonCornerRadius(getButton().cornerRadius)
+        getButton().cornerRadius = cornerRadius
+        setButtonCornerRadius(cornerRadius)
         return this
     }
 
@@ -396,7 +397,11 @@ class CustomButton : LinearLayout {
      */
     fun setBorderColor(borderColor: Int): CustomButton {
         getButton().borderColor = borderColor
-        setButtonBorder(getButton().borderWidth, getButton().borderColor)
+        setButtonBorder(
+            getButton().borderWidth,
+            getButton().borderColor,
+            getButton().btnBackgroundColor
+        )
         return this
     }
 
@@ -412,7 +417,11 @@ class CustomButton : LinearLayout {
      */
     fun setBorderWidth(borderWidth: Float): CustomButton {
         getButton().borderWidth = dpToPx(borderWidth)
-        setButtonBorder(getButton().borderWidth, getButton().borderColor)
+        setButtonBorder(
+            getButton().borderWidth,
+            getButton().borderColor,
+            getButton().btnBackgroundColor
+        )
         return this
     }
 
@@ -420,10 +429,13 @@ class CustomButton : LinearLayout {
         return this
     }
 
-    fun setButtonBorder(borderWidth: Float, borderColor: Int) {
+    fun setButtonBorder(borderWidth: Float, borderColor: Int, backgroundColor: Int) {
         val border = GradientDrawable()
-        border.setColor(borderColor)
+        border.setColor(backgroundColor)
         border.setStroke(borderWidth.toInt(), borderColor)
+        if (cornerRadius != 0f) {
+            border.cornerRadius = getButton().cornerRadius
+        }
         container.setBackground(border)
     }
 
@@ -434,16 +446,16 @@ class CustomButton : LinearLayout {
     }
 
     fun addRipple() {
-        val shape = GradientDrawable()
-        container.background = shape
+        /*val shape = GradientDrawable()
+        //container.background = shape
         RippleEffect.createRipple(
             container,
-            this.btnBackgroundColor,
-            this.rippleColor,
-            this.cornerRadius,
-            this.btnShape,
+            getButton().btnBackgroundColor,
+            getButton().rippleColor,
+            getButton().cornerRadius,
+            getButton().btnShape,
             shape
-        )
+        )*/
     }
 
     private fun Any.unitify(): Unit {}

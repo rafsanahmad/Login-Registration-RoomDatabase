@@ -25,7 +25,7 @@ class RippleEffect {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val mask = GradientDrawable()
                 mask.cornerRadius = pxToDp(corner)
-                mask.setColor(Color.GRAY)
+                mask.setColor(normalColor)
                 mask.shape = when (shape) {
                     Shape.RECTANGLE, Shape.SQUARE -> GradientDrawable.RECTANGLE
                     else -> GradientDrawable.OVAL

@@ -106,12 +106,12 @@
 
         <com.dev.custombutton.CustomButton
             android:id="@+id/submitButton"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
             android:onClick="@{()->viewModel.registerUser()}"
             app:btn_backgroundColor="@color/light_blue"
-            app:btn_borderColor="@color/border_color"
+            app:btn_borderColor="@color/white"
             app:btn_borderWidth="1dp"
             app:btn_cornerRadius="10dp"
             app:btn_image="@drawable/info_icon"

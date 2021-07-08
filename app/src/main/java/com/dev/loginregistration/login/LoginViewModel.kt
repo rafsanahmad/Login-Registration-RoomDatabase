@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dev.loginregistration.database.UserRepository
+import com.dev.loginregistration.prefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -68,6 +69,8 @@ class LoginViewModel(private val repository: UserRepository, application: Applic
     }
 
     fun doneNavigateToHome() {
+        //Update status
+        prefs.registerStatus = true
         _navigateToHome.value = false
     }
 

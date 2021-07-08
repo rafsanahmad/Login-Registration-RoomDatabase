@@ -1,19 +1,19 @@
 package com.dev.loginregistration.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.dev.loginregistration.R
-import com.dev.loginregistration.databinding.FragmentLoginBinding
 import com.dev.loginregistration.database.UserDatabase
 import com.dev.loginregistration.database.UserRepository
+import com.dev.loginregistration.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment() {
@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
-        binding.loginViewModel = loginViewModel
+        binding.viewModel = loginViewModel
 
         binding.lifecycleOwner = this
 
@@ -72,7 +72,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel.navigateToHome.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished == true) {
-                navigateHome()
+                navigateHome(binding.userNameTextField.text.toString())
                 loginViewModel.doneNavigateToHome()
             }
         })
@@ -81,8 +81,8 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    private fun navigateHome() {
-        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment()
+    private fun navigateHome(username: String) {
+        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(username)
         NavHostFragment.findNavController(this).navigate(action)
     }
 }

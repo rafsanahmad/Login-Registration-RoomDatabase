@@ -1,9 +1,11 @@
 package com.dev.loginregistration
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.NavHostFragment
 import com.dev.loginregistration.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,5 +13,15 @@ class MainActivity : AppCompatActivity() {
         @Suppress("UNUSED VARIABLE")
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
+        val navHostFragment = navHostFragment as NavHostFragment
+        val graphInflater = navHostFragment.navController.navInflater
+        val navGraph = graphInflater.inflate(R.navigation.navigation)
+        val navController = navHostFragment.navController
+
+        val destination =
+            if (prefs.registerStatus) R.id.loginFragment else R.id.registerFragment
+        navGraph.startDestination = destination
+        navController.graph = navGraph
     }
 }

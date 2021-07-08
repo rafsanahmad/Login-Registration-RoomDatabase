@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dev.loginregistration.database.UserRepository
-import java.lang.IllegalArgumentException
 
 class RegisterViewModelFactory(
     private val repository: UserRepository,
