@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 package com.dev.loginregistration.register
 
 import android.app.Application
@@ -25,7 +33,7 @@ class RegisterViewModel(private val repository: UserRepository, application: App
     }
 
     @Bindable
-    val inputFullName = MutableLiveData<String>()
+    var inputFullName = MutableLiveData<String>()
 
     @Bindable
     val inputUsername = MutableLiveData<String>()
@@ -42,19 +50,19 @@ class RegisterViewModel(private val repository: UserRepository, application: App
     val navigateto: LiveData<Boolean>
         get() = _navigateto
 
-    private val _errorToast = MutableLiveData<Boolean>()
+    var _errorToast = MutableLiveData<Boolean>()
 
-    val errotoast: LiveData<Boolean>
+    val errortoast: LiveData<Boolean>
         get() = _errorToast
 
     private val _errorToastUsername = MutableLiveData<String>()
 
-    val errotoastUsername: LiveData<String>
+    val errortoastUsername: LiveData<String>
         get() = _errorToastUsername
 
     private val _errorToastPassword = MutableLiveData<String>()
 
-    val errotoastPassword: LiveData<String>
+    val errortoastPassword: LiveData<String>
         get() = _errorToastPassword
 
 
@@ -77,7 +85,6 @@ class RegisterViewModel(private val repository: UserRepository, application: App
             _errorToastPassword.value = "Password must contain 1 lowercase letter."
         } else {
             uiScope.launch {
-//            withContext(Dispatchers.IO) {
                 val usersNames = repository.getUserName(inputUsername.value!!)
                 if (usersNames != null) {
                     _errorToastUsername.value = "Username already exists."

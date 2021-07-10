@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -35,6 +43,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -75,4 +86,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation "androidx.test.ext:junit:$rootProject.jUnitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockito2Version"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.androidXCoreTesting"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.androidXCoreTesting"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockitoVersion"
 }

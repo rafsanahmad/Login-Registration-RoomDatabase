@@ -1,4 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<!--
+  ~ /**
+  ~  * Created by rafsanahmad on 7/10/21, 11:55 PM
+  ~  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+  ~  * Last modified 7/10/21, 11:55 PM
+  ~  */
+  -->
+
+<resources>
     <string name="app_name">Login Registration</string>
     <string name="username">Username</string>
     <string name="password">Password</string>

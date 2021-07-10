@@ -1,12 +1,18 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 package com.dev.loginregistration
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.

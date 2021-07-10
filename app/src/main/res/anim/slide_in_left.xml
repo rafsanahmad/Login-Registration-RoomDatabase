@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by rafsanahmad on 7/10/21, 11:55 PM
+  ~  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+  ~  * Last modified 7/10/21, 11:55 PM
+  ~  */
+  -->
+
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <translate android:fromXDelta="-100%" android:toXDelta="0%"
         android:fromYDelta="0%" android:toYDelta="0%"

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by rafsanahmad on 7/10/21, 11:55 PM
+  ~  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+  ~  * Last modified 7/10/21, 11:55 PM
+  ~  */
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dev.loginregistration">
 
@@ -12,6 +20,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

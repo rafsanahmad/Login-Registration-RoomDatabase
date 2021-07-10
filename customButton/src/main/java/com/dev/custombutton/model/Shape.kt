@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 package com.dev.custombutton.model
 
 /**

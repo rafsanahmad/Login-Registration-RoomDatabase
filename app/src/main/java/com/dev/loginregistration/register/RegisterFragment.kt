@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 package com.dev.loginregistration.register
 
 import android.os.Bundle
@@ -49,7 +57,7 @@ class RegisterFragment : Fragment() {
             }
         })
 
-        registerViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError ->
+        registerViewModel.errortoast.observe(viewLifecycleOwner, Observer { hasError ->
             if (hasError == true) {
                 Toast.makeText(requireContext(), "Please fill all fields.", Toast.LENGTH_SHORT)
                     .show()
@@ -57,7 +65,7 @@ class RegisterFragment : Fragment() {
             }
         })
 
-        registerViewModel.errotoastUsername.observe(viewLifecycleOwner, Observer { hasError ->
+        registerViewModel.errortoastUsername.observe(viewLifecycleOwner, Observer { hasError ->
             if (hasError.isNotEmpty()) {
                 Toast.makeText(requireContext(), hasError, Toast.LENGTH_SHORT)
                     .show()
@@ -65,7 +73,7 @@ class RegisterFragment : Fragment() {
             }
         })
 
-        registerViewModel.errotoastPassword.observe(viewLifecycleOwner, Observer { hasError ->
+        registerViewModel.errortoastPassword.observe(viewLifecycleOwner, Observer { hasError ->
             if (hasError.isNotEmpty()) {
                 Toast.makeText(requireContext(), hasError, Toast.LENGTH_SHORT)
                     .show()

@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by rafsanahmad on 7/10/21, 11:55 PM
+ *  * Copyright (c) 2021  rafsanahmad. All rights reserved.
+ *  * Last modified 7/10/21, 11:55 PM
+ *
+ */
+
 package com.dev.loginregistration.home
 
 import android.content.Intent
@@ -46,40 +54,62 @@ class HomeFragment : Fragment(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onAppBackgrounded() {
         Log.d("App", "App in background")
-        //10 seconds timer
-        backgroundTimer = object : CountDownTimer(11000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val seconds = millisUntilFinished / 1000
-                binding.timerMessage.text = "App in background: $seconds Seconds"
-            }
-
-            override fun onFinish() {
-                Log.d("App", "Background timer end")
-                navigateToLogin()
-            }
-        }
-        backgroundTimer.start()
+        stopTimer(foreground = true)
+        startTimer(foreground = false, milliSecondsLeft = viewModel.backgroundMilliSeconds)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onAppForegrounded() {
         Log.d("App", "App in foreground")
-        //30 seconds timer
-        foregroundTimer = object : CountDownTimer(31000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val seconds = millisUntilFinished / 1000
-                binding.timerMessage.text = "App in foreground: $seconds Seconds"
-            }
+        stopTimer(foreground = false)
+        startTimer(foreground = true, milliSecondsLeft = viewModel.foregroundMilliSeconds)
+    }
 
-            override fun onFinish() {
-                Log.d("App", "Foreground timer end")
-                navigateToLogin()
+    //Start foreground, background timer
+    private fun startTimer(foreground: Boolean, milliSecondsLeft: Long) {
+        if (foreground) {
+            foregroundTimer = object : CountDownTimer(milliSecondsLeft, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val seconds = millisUntilFinished / 1000
+                    binding.timerMessage.text = "App in foreground: $seconds Seconds"
+                }
+
+                override fun onFinish() {
+                    Log.d("App", "Foreground timer end")
+                    navigateToLogin()
+                }
+            }
+            foregroundTimer.start()
+        } else {
+            backgroundTimer = object : CountDownTimer(milliSecondsLeft, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val seconds = millisUntilFinished / 1000
+                    binding.timerMessage.text = "App in background: $seconds Seconds"
+                }
+
+                override fun onFinish() {
+                    Log.d("App", "Background timer end")
+                    navigateToLogin()
+                }
+            }
+            backgroundTimer.start()
+        }
+    }
+
+    private fun stopTimer(foreground: Boolean) {
+        if (foreground) {
+            if (::foregroundTimer.isInitialized) {
+                foregroundTimer.cancel()
+            }
+        } else {
+            if (::backgroundTimer.isInitialized) {
+                backgroundTimer.cancel()
             }
         }
-        foregroundTimer.start()
     }
 
     private fun navigateToLogin() {
+        //Stop both timer
         if (::foregroundTimer.isInitialized) {
             foregroundTimer.cancel()
         }
