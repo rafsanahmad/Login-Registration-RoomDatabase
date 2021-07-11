@@ -64,19 +64,21 @@ InstrumentationTest.kt - Instrumentation test using espresso. The test runs from
 The app has a custom module called Custom Button, which is used across the main application.
 
 Custom Button has the following properties:
-a) Button title - show/hide/change color
-b) Button subtitle - show/hide/change color
-c) Button image - show/hide/tint color/Image size
-d) Button ripple - color
-e) Button background color
-f) Button shape (rectange, circle, square, oval)
-g) Button border - width/color
+
+a) Button title - show/hide/change color/size\
+b) Button subtitle - show/hide/change color/size\
+c) Button image - show/hide/tint color/Image size\
+d) Button ripple - color\
+e) Button background color\
+f) Button shape (rectange, circle, square, oval)\
+g) Button border - width/color\
 h) Button corner - radius
 
 These attributes can be configured from layouts.xml
 
 For example:
-```<com.dev.custombutton.CustomButton
+```
+<com.dev.custombutton.CustomButton
 android:id="@+id/logoutBtn"
 android:layout_width="250dp"
 android:layout_height="50dp"
@@ -94,14 +96,16 @@ app:btn_rippleColor="@color/purple_700"
 app:btn_subtitle="@string/end_session"
 app:btn_subtitleColor="@color/white"
 app:btn_title="@string/logout"
-app:btn_titleColor="@color/white"/>```
+app:btn_titleColor="@color/white"/>
+```
 
 ![](/images/custom_button.png)
 
 The attributes can also be configured from themes.xml
 
 For example:
-```<com.dev.custombutton.CustomButton
+```
+<com.dev.custombutton.CustomButton
 android:id="@+id/loginBtn"
 style="?attr/button_style"
 android:layout_width="200dp"
@@ -109,22 +113,26 @@ android:layout_height="50dp"
 android:layout_marginTop="50dp"
 android:onClick="@{()->viewModel.loginButton()}"
 app:btn_subtitle="@string/username_password"
-app:btn_title="@string/logintext"/>```
+app:btn_title="@string/logintext"/>
+```
 
 In themes.xml:
-```<style name="CustomButtonStyle">
-<item name="btn_titleColor">@color/white</item>
-<item name="btn_subtitleColor">@color/white</item>
-<item name="btn_imageTint">@color/white</item>
-<item name="btn_backgroundColor">@color/light_blue</item>
-<item name="btn_rippleColor">@color/purple_700</item>
-<item name="btn_borderColor">@color/dark_blue</item>
-<item name="btn_borderWidth">2dp</item>
-<item name="btn_cornerRadius">10dp</item>
-</style>```
+```
+<style name="CustomButtonStyle">
+  <item name="btn_titleColor">@color/white</item>
+  <item name="btn_subtitleColor">@color/white</item>
+  <item name="btn_imageTint">@color/white</item>
+  <item name="btn_backgroundColor">@color/light_blue</item>
+  <item name="btn_rippleColor">@color/purple_700</item>
+  <item name="btn_borderColor">@color/dark_blue</item>
+  <item name="btn_borderWidth">2dp</item>
+  <item name="btn_cornerRadius">10dp</item>
+</style>
+```
 
-Plug in the custom style to main app-theme:
-```<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-<item name="button_style">@style/CustomButtonStyle</item>
-</style>```
-
+Plug in the custom style to main app theme:
+```
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+	<item name="button_style">@style/CustomButtonStyle</item>
+</style>
+```
