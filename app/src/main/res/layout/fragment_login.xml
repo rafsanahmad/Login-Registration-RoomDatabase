@@ -85,7 +85,7 @@
         <com.dev.custombutton.CustomButton
             android:id="@+id/loginBtn"
             style="?attr/button_style"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
             android:onClick="@{()->viewModel.loginButton()}"

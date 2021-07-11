@@ -73,10 +73,10 @@ class RegisterViewModel(private val repository: UserRepository, application: App
 
         if (inputFullName.value == null || inputUsername.value == null || inputPassword.value == null) {
             _errorToast.value = true
-        } else if (inputUsername.value!!.length < 5) {
+        } else if (inputUsername.value!!.length <= 5) {
             _errorToastUsername.value = "Username must be greater than 5 characters."
         } else if (inputPassword.value!!.length < 4) {
-            _errorToastPassword.value = "Password must be greater than 4 characters."
+            _errorToastPassword.value = "Password must be greater than 3 characters."
         } else if (!digit.matcher(inputPassword.value!!).matches()) {
             _errorToastPassword.value = "Password must contain 1 digit."
         } else if (!upperCase.matcher(inputPassword.value!!).matches()) {

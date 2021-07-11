@@ -26,6 +26,8 @@
         <attr name="btn_rippleColor" format="color|reference" />
         <attr name="btn_backgroundColor" format="color|reference" />
         <attr name="btn_cornerRadius" format="dimension" />
+        <attr name="btn_titleSize" format="dimension" />
+        <attr name="btn_subtitleSize" format="dimension" />
         <attr name="btn_shape">
             <enum name="rectangle" value="0" />
             <enum name="square" value="1" />

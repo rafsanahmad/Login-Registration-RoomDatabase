@@ -57,18 +57,18 @@ class RegisterViewModelTest {
     @Test
     fun testRegisterUserWithEmptyPassword() {
         viewModel.inputFullName.postValue("Abdul karim")
-        viewModel.inputUsername.postValue("Karim")
+        viewModel.inputUsername.postValue("Karims")
         viewModel.inputPassword.postValue("")
         viewModel._errorToast.observeForever {}
         viewModel.registerUser()
         val value = viewModel.errortoastPassword.value
-        assert(value.equals("Password must be greater than 4 characters."))
+        assert(value.equals("Password must be greater than 3 characters."))
     }
 
     @Test
     fun testRegisterUserWithNoDigitPassword() {
         viewModel.inputFullName.postValue("Abdul karim")
-        viewModel.inputUsername.postValue("Karim")
+        viewModel.inputUsername.postValue("Karims")
         viewModel.inputPassword.postValue("Aaaaaa")
         viewModel._errorToast.observeForever {}
         viewModel.registerUser()
@@ -79,7 +79,7 @@ class RegisterViewModelTest {
     @Test
     fun testRegisterUserWithNoUppercasePassword() {
         viewModel.inputFullName.postValue("Abdul karim")
-        viewModel.inputUsername.postValue("Karim")
+        viewModel.inputUsername.postValue("Karims")
         viewModel.inputPassword.postValue("aaaaa1")
         viewModel._errorToast.observeForever {}
         viewModel.registerUser()
@@ -90,7 +90,7 @@ class RegisterViewModelTest {
     @Test
     fun testRegisterUserWithNoLowercasePassword() {
         viewModel.inputFullName.postValue("Abdul karim")
-        viewModel.inputUsername.postValue("Karim")
+        viewModel.inputUsername.postValue("Karims")
         viewModel.inputPassword.postValue("AAAA1")
         viewModel._errorToast.observeForever {}
         viewModel.registerUser()

@@ -95,9 +95,11 @@ class CustomButton : LinearLayout {
 
         val title: String?
         val titleColor: Int
+        val titleSize: Float?
 
         val subtitle: String?
         val subtitleColor: Int
+        val subtitleSize: Float?
 
         val titleVisible: Boolean
         val subtitleVisible: Boolean
@@ -119,6 +121,8 @@ class CustomButton : LinearLayout {
                 resources.getColor(R.color.view_subtitle)
             )
             subtitleVisible = a.getBoolean(R.styleable.CustomButton_btn_subtitleVisible, true)
+            titleSize = a.getDimension(R.styleable.CustomButton_btn_titleSize, 20f)
+            subtitleSize = a.getDimension(R.styleable.CustomButton_btn_subtitleSize, 12f)
 
             cornerRadius = a.getDimension(R.styleable.CustomButton_btn_cornerRadius, 0f)
             rippleColor = a.getColor(
@@ -166,6 +170,8 @@ class CustomButton : LinearLayout {
             }
             titleView.setTextColor(titleColor)
             subtitleView.setTextColor(subtitleColor)
+            setTitleSize(titleSize)
+            setSubtitleSize(subtitleSize)
 
             setRippleColor(rippleColor)
 
@@ -186,6 +192,16 @@ class CustomButton : LinearLayout {
         } finally {
             a.recycle()
         }
+    }
+
+    private fun setTitleSize(titleSize: Float): CustomButton {
+        titleView.textSize = titleSize
+        return this
+    }
+
+    private fun setSubtitleSize(subtitleSize: Float): CustomButton {
+        subtitleView.textSize = subtitleSize
+        return this
     }
 
     /**
