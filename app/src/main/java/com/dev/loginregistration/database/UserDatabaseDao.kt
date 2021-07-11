@@ -20,9 +20,6 @@ interface UserDatabaseDao {
     @Insert
     suspend fun insert(user: UserEntity)
 
-    //@Delete
-    //suspend  fun deleteSubscriber(register: RegisterEntity):Int
-
     @Query("SELECT * FROM users_table ORDER BY userId DESC")
     fun getAllUsers(): LiveData<List<UserEntity>>
 
