@@ -76,7 +76,7 @@ h) Button corner - radius
 These attributes can be configured from layouts.xml
 
 For example:
-`<com.dev.custombutton.CustomButton
+```<com.dev.custombutton.CustomButton
 android:id="@+id/logoutBtn"
 android:layout_width="250dp"
 android:layout_height="50dp"
@@ -94,14 +94,14 @@ app:btn_rippleColor="@color/purple_700"
 app:btn_subtitle="@string/end_session"
 app:btn_subtitleColor="@color/white"
 app:btn_title="@string/logout"
-app:btn_titleColor="@color/white"/>`
+app:btn_titleColor="@color/white"/>```
 
 ![](/images/custom_button.png)
 
 The attributes can also be configured from themes.xml
 
 For example:
-`<com.dev.custombutton.CustomButton
+```<com.dev.custombutton.CustomButton
 android:id="@+id/loginBtn"
 style="?attr/button_style"
 android:layout_width="200dp"
@@ -109,10 +109,10 @@ android:layout_height="50dp"
 android:layout_marginTop="50dp"
 android:onClick="@{()->viewModel.loginButton()}"
 app:btn_subtitle="@string/username_password"
-app:btn_title="@string/logintext"/>`
+app:btn_title="@string/logintext"/>```
 
 In themes.xml:
-`<style name="CustomButtonStyle">
+```<style name="CustomButtonStyle">
 <item name="btn_titleColor">@color/white</item>
 <item name="btn_subtitleColor">@color/white</item>
 <item name="btn_imageTint">@color/white</item>
@@ -121,10 +121,10 @@ In themes.xml:
 <item name="btn_borderColor">@color/dark_blue</item>
 <item name="btn_borderWidth">2dp</item>
 <item name="btn_cornerRadius">10dp</item>
-</style>`
+</style>```
 
 Plug in the custom style to main app-theme:
-`<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+```<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 <item name="button_style">@style/CustomButtonStyle</item>
-</style>`
+</style>```
 
