@@ -20,7 +20,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="button_style">@style/CustomButtonStyle</item>
+        <item name="button_style">@style/ImageSubtitleButtonStyle</item>
     </style>
 
     <style name="PlainTextStyle">
@@ -29,7 +29,7 @@
         <item name="android:inputType">textPersonName</item>
     </style>
 
-    <style name="CustomButtonStyle">
+    <style name="ImageSubtitleButtonStyle">
         <item name="btn_titleColor">@color/white</item>
         <item name="btn_subtitleColor">@color/white</item>
         <item name="btn_imageTint">@color/white</item>

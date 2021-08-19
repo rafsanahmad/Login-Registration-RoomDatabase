@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
 
-        <com.dev.custombutton.CustomButton
+        <com.rafsan.image_subtitlebuttonlib.ImageSubtitleButton
             android:id="@+id/logoutBtn"
             android:layout_width="250dp"
             android:layout_height="50dp"

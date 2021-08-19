@@ -82,7 +82,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
 
-        <com.dev.custombutton.CustomButton
+        <com.rafsan.image_subtitlebuttonlib.ImageSubtitleButton
             android:id="@+id/loginBtn"
             style="?attr/button_style"
             android:layout_width="200dp"

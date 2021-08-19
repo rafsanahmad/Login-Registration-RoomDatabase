@@ -49,7 +49,6 @@ android {
 }
 
 dependencies {
-    implementation project(':customButton')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Core, Appcompat
@@ -80,6 +79,9 @@ dependencies {
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutineVersion"
+
+    //Custom Button
+    implementation "com.github.rafsanahmad:Image-Subtitle-Button:1.2.1"
 
     //Test Dependencies
     testImplementation 'junit:junit:4.+'
